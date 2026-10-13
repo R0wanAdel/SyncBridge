@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# .NET Build results
+[Bb]in/
+[Oo]bj/
+*.[Ll]og
+*.[Cc]ache
+
+# Visual Studio workspace files
+.vs/
+*.user
+*.suo

@@ -1,0 +1,34 @@
+erDiagram
+    Users ||--o{ SyncJobs : "starts"
+    Users ||--o{ Products : "owns"
+
+    Users {
+        uuid Id PK
+        varchar Email UK
+        varchar PasswordHash
+    }
+
+    SyncJobs {
+        uuid Id PK
+        uuid UserId FK
+        varchar Status "Queued, Processing, Completed, Failed, Interrupted"
+        timestamptz DateFrom
+        timestamptz DateTo
+        int TotalFetched
+        int TotalProcessed
+        int FailedRows
+        int LastProcessedPage "checkpoint"
+        timestamptz LastHeartbeat "watchdog"
+        varchar ErrorMessage
+        timestamptz CreatedAt
+        timestamptz CompletedAt
+    }
+
+    Products {
+        int Id PK
+        uuid UserId FK
+        varchar ExternalId "UK with UserId"
+        varchar Name
+        numeric Price
+        timestamptz UpdatedAt
+    }
